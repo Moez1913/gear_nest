@@ -17,11 +17,13 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoute from './private/PrivateRoute.jsx';
 import ViewDetails from './Pages/ViewDetails.jsx';
 import Update from './Pages/Update.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Route></Route>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",

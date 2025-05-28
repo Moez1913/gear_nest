@@ -9,17 +9,17 @@ const AddEquipment = () => {
   const handleAddEquipment = (e) => {
     e.preventDefault();
     const form = e.target;
-    const  image= form.image.value ;
-    const  itemName= form.itemName.value ;
-    const  categoryName= form.categoryName.value ;
-    const  description= form.description.value ;
-    const  price= parseFloat(form.price.value) ;
-    const  rating= parseFloat(form.rating.value) ;
-    const  customization= form.customization.value ;
-    const  processingTime= form.processingTime.value ;
-    const  stockStatus= form.stockStatus.value ;
-    const  userEmail= user?.email ;
-    const  userName= user?.displayName ;
+    const image = form.image.value;
+    const itemName = form.itemName.value;
+    const categoryName = form.categoryName.value;
+    const description = form.description.value;
+    const price = parseFloat(form.price.value);
+    const rating = parseFloat(form.rating.value);
+    const customization = form.customization.value;
+    const processingTime = form.processingTime.value;
+    const stockStatus = form.stockStatus.value;
+    const userEmail = user?.email;
+    const userName = user?.displayName;
 
     const newEquipment = {
       image,
@@ -69,7 +69,24 @@ const AddEquipment = () => {
         <input type="text" name="itemName" placeholder="Item Name" className="input input-bordered w-full" required />
 
         {/* Category Name */}
-        <input type="text" name="categoryName" placeholder="Category (e.g. Cricket Gear)" className="input input-bordered w-full" required />
+       
+        <select
+          name="categoryName"
+          className="select select-bordered w-full"
+          placeholder="Select Category"
+          required
+        >
+          <option value="" disabled>
+            Select Category
+          </option>
+          <option value="Cricket Gear">Cricket Gear</option>
+          <option value="Football Gear">Football Gear</option>
+          <option value="Tennis Gear">Tennis Gear</option>
+          <option value="Badminton Gear">Badminton Gear</option>
+          <option value="Hockey Gear">Hockey Gear</option>
+          <option value="Swimming Gear">Swimming Gear</option>
+        </select>
+
 
         {/* Price */}
         <input type="number" name="price" placeholder="Price (৳)" className="input input-bordered w-full" required />

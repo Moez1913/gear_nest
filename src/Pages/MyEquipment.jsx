@@ -1,57 +1,92 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const MyEquipment = () => {
-    const [equipments, setEquipments] =useState([]);
-    const {user}=useContext(AuthContext);
+  const [equipments, setEquipments] = useState([]);
+  const { user } = useContext(AuthContext);
 
-   useEffect(() => {
-  if (user?.email) {
-    fetch(`http://localhost:5000/equipments/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
-        setEquipments(data); // set state
-      });
-  }
- 
-}, [user]); 
-
-    return (
-        <div>
-            
-            <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Added-By</th>
-        <th>Customise</th>
-      </tr>
-    </thead>
-    
-     {
-                equipments.map(equipment=><tr equipment={equipment} key={equipment._id}>
-        <th></th>
-        <td>{equipment.itemName}</td>
-        <td>{equipment.categoryName}</td>
-        <td>{equipment.price}</td>
-        <td>{equipment.stockStatus}</td>
-        <td>{equipment.userName}</td>
-        <td><button>x</button><button>Edit</button></td>
-      </tr>)
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`http://localhost:5000/equipments/email/${user.email}`)
+        .then(res => res.json())
+        .then(data => setEquipments(data));
+    }
+  }, [user]);
+const id=equipments._id
+  const handleRemove = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        // Replace with your delete API call
+        fetch(`http://localhost:5000/equipments/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+                const remainings=equipments.filter(eq => eq._id !== id)
+              setEquipments(remainings);
+              Swal.fire('Deleted!', 'Your equipment has been deleted.', 'success');
             }
-      
-      
-   
-  </table>
-</div>
-        </div>
-    );
+          });
+      }
+    });
+  };
+
+
+
+  return (
+    <div className="p-6">
+      <ToastContainer />
+      <h2 className="text-2xl font-bold mb-6 text-center">My Equipment</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {equipments.map(equipment => (
+          <div
+            key={equipment._id}
+            className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
+          >
+            <img
+              src={equipment.image}
+              alt={equipment.itemName}
+              className="h-48 w-full object-cover"
+            />
+            <div className="p-4 flex-1 flex flex-col">
+              <h3 className="text-lg font-bold mb-1">{equipment.itemName}</h3>
+              <p className="text-gray-600 mb-1">Category: {equipment.categoryName}</p>
+              <p className="text-gray-800 mb-1">Price: ${equipment.price}</p>
+              <p className="text-gray-500 mb-1">Stock: {equipment.stockStatus}</p>
+              <p className="text-blue-500 mb-2">Added by: {equipment.userName}</p>
+              <div className="mt-auto flex gap-2">
+                <button
+                  onClick={() => handleRemove(equipment._id)}
+                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                >
+                  Remove
+                </button>
+              <Link to={`/update/${equipment._id}`}> <button
+                  
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
+                >
+                  Update
+                </button></Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default MyEquipment;

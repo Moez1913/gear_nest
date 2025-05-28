@@ -15,6 +15,8 @@ import AllEquipment from './Pages/AllEquipment.jsx';
 import MyEquipment from './Pages/MyEquipment.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoute from './private/PrivateRoute.jsx';
+import ViewDetails from './Pages/ViewDetails.jsx';
+import Update from './Pages/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,16 @@ const router = createBrowserRouter([
       {
         path:'/my',
         element:<PrivateRoute><MyEquipment></MyEquipment></PrivateRoute>
+      },
+      {
+        path:'/details/:id',
+        element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+         loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
+      },
+      {
+        path:'/update/:id',
+        element:<PrivateRoute><Update></Update></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
       }
     ]
   },

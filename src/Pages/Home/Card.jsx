@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const Card = ({ equipment }) => {
-  const { image, itemName, price, rating } = equipment;
+  const {_id, image, itemName, price, rating } = equipment;
 
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-300 border border-gray-200">
@@ -14,9 +16,9 @@ const Card = ({ equipment }) => {
           <span className="text-green-600 font-bold">৳{price}</span>
           <span className="text-yellow-500">⭐ {rating}</span>
         </div>
-        <button className="btn btn-sm btn-primary w-full mt-4">
+        <Link to={`/details/${_id}`}><button className="btn btn-sm btn-primary w-full mt-4">
           View Details
-        </button>
+        </button></Link>
       </div>
     </div>
   );

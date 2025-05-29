@@ -25,6 +25,7 @@ const Update = () => {
         const stockStatus = form.stockStatus.value;
         const userEmail = user?.email;
         const userName = user?.displayName;
+      
 
         const newEquipment = {
             image,
@@ -53,12 +54,22 @@ const Update = () => {
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Success!",
-                        text: "Equipment Added Successfully",
+                        text: "Equipment Updated Successfully",
                         icon: "success",
                         confirmButtonText: "Okay",
                     });
-                    form.reset();
+
+                    
                     navigate('/my');
+                }
+                else{
+                    Swal.fire({
+                        title: "No Changes Made",       
+                        text: "No changes made to the equipment.",
+                        icon: "warning",
+                        confirmButtonText: "Okay",
+                    });
+                     navigate('/my');
                 }
             });
     };
@@ -85,12 +96,11 @@ const Update = () => {
                     <option value="" disabled>
                         Select Category
                     </option>
-                    <option value="Cricket Gear">Cricket Gear</option>
-                    <option value="Football Gear">Football Gear</option>
-                    <option value="Tennis Gear">Tennis Gear</option>
-                    <option value="Badminton Gear">Badminton Gear</option>
-                    <option value="Hockey Gear">Hockey Gear</option>
-                    <option value="Swimming Gear">Swimming Gear</option>
+               <option value="Cricket Gear">Cricket Gear</option>
+          <option value="Football">Football</option>
+          <option value="Badminton">Badminton</option>
+          <option value="Protective Gear">Protective Gear</option>
+          <option value="Bags & Carriers">Bags & Carriers</option>
                 </select>
 
 
@@ -121,7 +131,7 @@ const Update = () => {
 
                 {/* Submit Button */}
                 <div className="md:col-span-2">
-                    <button className="btn btn-primary w-full">Add Equipment</button>
+                    <button className="btn btn-primary w-full">Update Equipment</button>
                 </div>
 
             </form>

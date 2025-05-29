@@ -80,11 +80,11 @@ const AddEquipment = () => {
             Select Category
           </option>
           <option value="Cricket Gear">Cricket Gear</option>
-          <option value="Football Gear">Football Gear</option>
-          <option value="Tennis Gear">Tennis Gear</option>
-          <option value="Badminton Gear">Badminton Gear</option>
-          <option value="Hockey Gear">Hockey Gear</option>
-          <option value="Swimming Gear">Swimming Gear</option>
+          <option value="Football">Football</option>
+          <option value="Badminton">Badminton</option>
+          <option value="Protective Gear">Protective Gear</option>
+          <option value="Bags & Carriers">Bags & Carriers</option>
+          
         </select>
 
 

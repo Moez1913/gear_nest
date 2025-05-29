@@ -21,7 +21,7 @@ const Home = () => {
    
 
           <div>
-            <h1 className='text-3xl font-bold mb-8 text-gray-800'>Our Product</h1>
+            <h1 className='text-3xl font-bold mb-8 text-gray-800 mt-8'>Our Product</h1>
              <Equipments></Equipments>
           </div>
            <section className="bg-white py-16 px-4">

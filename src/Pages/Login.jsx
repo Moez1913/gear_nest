@@ -49,8 +49,10 @@ const Login = () => {
     navigate('/')
   }
   return (
-    <div className="items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+   <div className='bg-slate-200 flex justify-center'>
+            <div className="card  w-full max-w-sm shrink-0 shadow-2xl"
+          
+            >
         <form onSubmit={handelLogin} className="card-body">
           <div className="form-control">
             <label className="label">

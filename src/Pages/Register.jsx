@@ -1,7 +1,7 @@
 import  { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const {createUser}= useContext(AuthContext); 
@@ -74,6 +74,11 @@ const Register = () => {
         </div>
          <input className='btn' type="submit" value="Submit" />
       </form>
+      <div className="form-control mt-6">
+        <label className="label">
+          <span className="label-text-alt text-black">Already have an account? <Link to='/login'><a className="link link-hover text-yellow-400">Login</a></Link></span>
+        </label>
+        </div>
     </div>
     <ToastContainer></ToastContainer>
         </div>

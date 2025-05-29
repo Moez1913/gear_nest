@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -26,6 +27,7 @@ const ThemeToggle = () => {
           theme === "dark" ? "translate-x-6" : "translate-x-0"
         }`}
       ></div>
+     
     </div>
   );
 };

@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import ThemeToggle from './ThemeToggle';
+import { CiLight } from 'react-icons/ci';
+import { MdNightlight } from 'react-icons/md';
 
 const Navbar = () => {
     const { user, userLogOut } = useContext(AuthContext);
@@ -47,7 +49,7 @@ const Navbar = () => {
                     </div>
                     {/* Theme Toggle (desktop) */}
                     <div className="hidden md:flex items-center ml-4">
-                        <ThemeToggle />
+                       <CiLight/>  <ThemeToggle /> <MdNightlight />
                     </div>
                     {/* User Section */}
                     <div className="hidden md:flex items-center gap-3">

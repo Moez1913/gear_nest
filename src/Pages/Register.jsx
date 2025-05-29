@@ -1,9 +1,11 @@
 import  { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const {createUser}= useContext(AuthContext); 
+  const navigate=useNavigate()
   const handelRegister=(e)=>{
     e.preventDefault();
     const form = e.target;

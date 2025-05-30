@@ -11,7 +11,7 @@ const MyEquipment = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/equipments/email/${user.email}`)
+      fetch(`https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments/email/${user.email}`)
         .then(res => res.json())
         .then(data => setEquipments(data));
     }

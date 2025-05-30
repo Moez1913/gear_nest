@@ -36,7 +36,7 @@ const AddEquipment = () => {
     };
 
     // Send data to server
-    fetch("http://localhost:5000/equipments", {
+    fetch("https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -18,6 +18,7 @@ import PrivateRoute from './private/PrivateRoute.jsx';
 import ViewDetails from './Pages/ViewDetails.jsx';
 import Update from './Pages/Update.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import Blog from './Pages/Blog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       {
         path:'/all',
         element:<PrivateRoute><AllEquipment></AllEquipment></PrivateRoute>,
-        loader: () => fetch(' http://localhost:5000/equipments')
+        loader: () => fetch(' https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments')
 
       },
       {
@@ -54,13 +55,18 @@ const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-         loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
+         loader: ({params}) => fetch(`https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments/${params.id}`)
       },
       {
         path:'/update/:id',
         element:<PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
+        loader: ({params}) => fetch(`https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments/${params.id}`)
+      },
+      {
+        path:'/blog',
+        element:<Blog></Blog>
       }
+      
     ]
   },
 ]);

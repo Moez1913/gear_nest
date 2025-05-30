@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const AllEquipment = () => {
@@ -11,6 +12,11 @@ const AllEquipment = () => {
         : equipments;
 
     return (
+       <>
+       <Helmet>
+        <title>GearNest|All Equipments</title>
+       </Helmet>
+
         <div>
             <div className="flex justify-end mb-4 mt-4">
                 <button
@@ -55,6 +61,7 @@ const AllEquipment = () => {
                 </table>
             </div>
         </div>
+       </>
     );
 };
 

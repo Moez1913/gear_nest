@@ -7,7 +7,7 @@ const Equipments = () => {
   const [activeCategory, setActiveCategory] = useState("All Equipments");
 
   useEffect(() => {
-    fetch('https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments')
+    fetch('https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments')
       .then((res) => res.json())
       .then((data) => {
         setAllEquipments(data);

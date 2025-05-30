@@ -1,7 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
   return (
+    <>
+     <Helmet>
+            <title>GearNest|Bog</title>
+           </Helmet>
     <div className="max-w-4xl mx-auto px-4 py-10">
       <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">GearNest Blog</h1>
 
@@ -47,6 +52,7 @@ const Blog = () => {
         <p className="text-gray-500 text-sm">Posted on May 25, 2025</p>
       </article>
     </div>
+    </>
   );
 };
 

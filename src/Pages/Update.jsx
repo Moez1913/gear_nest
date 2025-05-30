@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const Update = () => {
@@ -42,7 +43,7 @@ const Update = () => {
         };
 
         // Send data to server
-        fetch(`https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments/${_id}`, {
+        fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -75,6 +76,10 @@ const Update = () => {
     };
 
     return (
+        <>
+                 <Helmet>
+                    <title>GearNest|My Equipments</title>
+                   </Helmet>
         <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-10">
             <h2 className="text-3xl font-bold text-center mb-6 text-primary">Update Equipment</h2>
             <form onSubmit={handelUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -136,6 +141,7 @@ const Update = () => {
 
             </form>
         </div>
+        </>
     );
 };
 

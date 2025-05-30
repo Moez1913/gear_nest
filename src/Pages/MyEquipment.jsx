@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const MyEquipment = () => {
   const [equipments, setEquipments] = useState([]);
@@ -11,7 +12,7 @@ const MyEquipment = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://gear-nest-server-auqt7fehz-md-moez-moez-uddins-projects.vercel.app/equipments/email/${user.email}`)
+      fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/email/${user.email}`)
         .then(res => res.json())
         .then(data => setEquipments(data));
     }
@@ -29,7 +30,7 @@ const MyEquipment = () => {
     }).then(result => {
       if (result.isConfirmed) {
         // Replace with your delete API call
-        fetch(`http://localhost:5000/equipments/${id}`, {
+        fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -47,7 +48,11 @@ const MyEquipment = () => {
 
 
 
-  return equipments.length ? (<div className="p-6">
+  return equipments.length ? (<>
+            <Helmet>
+            <title>GearNest|My Equipments</title>
+           </Helmet>
+         <div className="p-6">
         <ToastContainer />
         <h2 className="text-2xl font-bold mb-6 text-center">My Equipment</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -85,15 +90,19 @@ const MyEquipment = () => {
             </div>
           ))}
         </div>
-      </div>)
+      </div></>)
        :
-        (<div className="p-6 text-center">
+        ( <>
+          <Helmet>
+            <title>GearNest|My Equipments</title>
+           </Helmet>
+        <div className="p-6 text-center">
           <h2 className="text-2xl font-bold mb-4">No Equipment Found</h2>
           <p className="text-gray-600">You have not added any equipment yet.</p>
           <Link to="/add" className="mt-4 inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
             Add Equipment
           </Link>
-        </div>)
+        </div></>)
           
    
           

@@ -2,6 +2,7 @@ import  { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
   const {createUser}= useContext(AuthContext); 
@@ -41,7 +42,10 @@ const Register = () => {
       })
 
   }
-    return (
+    return (<>
+           <Helmet>
+                <title>GearNest|Register</title>
+               </Helmet>
         <div className='bg-lime-200 flex justify-center'>
             <div className="card  w-full max-w-sm shrink-0 shadow-2xl"
           
@@ -82,6 +86,7 @@ const Register = () => {
     </div>
     <ToastContainer></ToastContainer>
         </div>
+        </>
     );
 };
 

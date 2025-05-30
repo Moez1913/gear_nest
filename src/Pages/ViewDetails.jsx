@@ -1,6 +1,7 @@
 
 
 
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -17,6 +18,10 @@ const {image, itemName, categoryName, description, price, stockStatus, userName,
   
 
   return (
+    <>
+             <Helmet>
+                <title>GearNest|Details</title>
+               </Helmet>
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden mt-8">
       <img className="w-full h-56 object-cover" src={image} alt={itemName} />
       <div className="p-6">
@@ -38,6 +43,7 @@ const {image, itemName, categoryName, description, price, stockStatus, userName,
         </div>
       </div>
     </div>
+    </>
   );
 };
 

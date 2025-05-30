@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 
@@ -49,6 +50,10 @@ const Login = () => {
     navigate('/')
   }
   return (
+    <>
+     <Helmet>
+            <title>GearNest|Login</title>
+           </Helmet>
    <div className='bg-slate-200 flex justify-center'>
             <div className="card  w-full max-w-sm shrink-0 shadow-2xl"
           
@@ -86,6 +91,7 @@ const Login = () => {
       </div>
       <ToastContainer></ToastContainer>
     </div>
+    </>
   );
 };
 

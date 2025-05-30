@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import { Zoom } from "react-awesome-reveal";
-import errorAnimation from '../../public/assets/Animation.json';// path to your Lottie JSON animation
+import errorAnimation from '../../public/assets/Animation.json';
+import { Helmet } from "react-helmet";
 
 const ErrorPage = () => {
   return (
+    <>
+     <Helmet>
+            <title>GearNest|ErrorPage</title>
+           </Helmet>
     <div className="flex flex-col items-center justify-center min-h-screen bg-base-100 text-center px-4">
       <Zoom>
         <div className="max-w-md w-full">
@@ -19,6 +24,7 @@ const ErrorPage = () => {
         </div>
       </Zoom>
     </div>
+    </>
   );
 };
 

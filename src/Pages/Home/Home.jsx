@@ -1,11 +1,16 @@
 
 
+import { Helmet } from 'react-helmet';
 import Banner from './Banner';
 import Equipments from './Equipments';
 
 const Home = () => {
       
     return (
+        <>
+         <Helmet>
+                <title>GearNest|Home</title>
+               </Helmet>
         <div>
           
            <Banner></Banner>
@@ -51,6 +56,7 @@ const Home = () => {
    
            
             </div>
+            </>
       
     );
 };

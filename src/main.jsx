@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path:'/all',
         element:<PrivateRoute><AllEquipment></AllEquipment></PrivateRoute>,
-        loader: () => fetch(' https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments')
+        loader: () => fetch('https://gear-nest-server.vercel.app/equipments')
 
       },
       {
@@ -55,12 +55,12 @@ const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-         loader: ({params}) => fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${params.id}`)
+         loader: ({params}) => fetch(`https://gear-nest-server.vercel.app/equipments/${params.id}`)
       },
       {
         path:'/update/:id',
         element:<PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({params}) => fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${params.id}`)
+        loader: ({params}) => fetch(`https://gear-nest-server.vercel.app/equipments/${params.id}`)
       },
       {
         path:'/blog',

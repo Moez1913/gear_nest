@@ -43,7 +43,7 @@ const Update = () => {
         };
 
         // Send data to server
-        fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${_id}`, {
+        fetch(`https://gear-nest-server.vercel.app/equipments/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

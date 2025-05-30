@@ -12,7 +12,7 @@ const MyEquipment = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/email/${user.email}`)
+      fetch(`https://gear-nest-server.vercel.app/equipments/email/${user.email}`)
         .then(res => res.json())
         .then(data => setEquipments(data));
     }
@@ -30,7 +30,7 @@ const MyEquipment = () => {
     }).then(result => {
       if (result.isConfirmed) {
         // Replace with your delete API call
-        fetch(`https://gear-nest-server-p40j335dv-md-moez-moez-uddins-projects.vercel.app/equipments/${id}`, {
+        fetch(`https://gear-nest-server.vercel.app/equipments/${id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

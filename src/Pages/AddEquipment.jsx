@@ -60,70 +60,70 @@ const AddEquipment = () => {
 
   return (
     <>
-     <Helmet>
-            <title>GearNest|Add Equipments</title>
-           </Helmet>
-    <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-10">
-      <h2 className="text-3xl font-bold text-center mb-6 text-primary">Add New Equipment</h2>
-      <form onSubmit={handleAddEquipment} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Helmet>
+        <title>GearNest|Add Equipments</title>
+      </Helmet>
+      <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-10">
+        <h2 className="text-3xl font-bold text-center mb-6 text-primary">Add New Equipment</h2>
+        <form onSubmit={handleAddEquipment} className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-        {/* Image URL */}
-        <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" required />
+          {/* Image URL */}
+          <input type="text" name="image" placeholder="Image URL" className="input input-bordered w-full" required />
 
-        {/* Item Name */}
-        <input type="text" name="itemName" placeholder="Item Name" className="input input-bordered w-full" required />
+          {/* Item Name */}
+          <input type="text" name="itemName" placeholder="Item Name" className="input input-bordered w-full" required />
 
-        {/* Category Name */}
-       
-        <select
-          name="categoryName"
-          className="select select-bordered w-full"
-          placeholder="Select Category"
-          required
-        >
-          <option value="" disabled>
-            Select Category
-          </option>
-          <option value="Cricket Gear">Cricket Gear</option>
-          <option value="Football">Football</option>
-          <option value="Badminton">Badminton</option>
-          <option value="Protective Gear">Protective Gear</option>
-          <option value="Bags & Carriers">Bags & Carriers</option>
-          
-        </select>
+          {/* Category Name */}
+
+          <select
+            name="categoryName"
+            className="select select-bordered w-full"
+            placeholder="Select Category"
+            required
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+            <option value="Cricket Gear">Cricket Gear</option>
+            <option value="Football">Football</option>
+            <option value="Badminton">Badminton</option>
+            <option value="Protective Gear">Protective Gear</option>
+            <option value="Bags & Carriers">Bags & Carriers</option>
+
+          </select>
 
 
-        {/* Price */}
-        <input type="number" name="price" placeholder="Price (৳)" className="input input-bordered w-full" required />
+          {/* Price */}
+          <input type="number" name="price" placeholder="Price (৳)" className="input input-bordered w-full" required />
 
-        {/* Rating */}
-        <input type="number" step="0.1" name="rating" placeholder="Rating (out of 5)" className="input input-bordered w-full" required />
+          {/* Rating */}
+          <input type="number" step="0.1" name="rating" placeholder="Rating (out of 5)" className="input input-bordered w-full" required />
 
-        {/* Customization */}
-        <input type="text" name="customization" placeholder="Customization (e.g. extra grip)" className="input input-bordered w-full" required />
+          {/* Customization */}
+          <input type="text" name="customization" placeholder="Customization (e.g. extra grip)" className="input input-bordered w-full" required />
 
-        {/* Processing Time */}
-        <input type="text" name="processingTime" placeholder="Processing Time (e.g. 2-3 days)" className="input input-bordered w-full" required />
+          {/* Processing Time */}
+          <input type="text" name="processingTime" placeholder="Processing Time (e.g. 2-3 days)" className="input input-bordered w-full" required />
 
-        {/* Stock Status */}
-        <input type="number" name="stockStatus" placeholder="Available Stock Quantity" className="input input-bordered w-full" required />
+          {/* Stock Status */}
+          <input type="number" name="stockStatus" placeholder="Available Stock Quantity" className="input input-bordered w-full" required />
 
-        {/* User Email (read-only) */}
-        <input type="email" name="userEmail" defaultValue={user?.email} className="input input-bordered w-full" readOnly />
+          {/* User Email (read-only) */}
+          <input type="email" name="userEmail" defaultValue={user?.email} className="input input-bordered w-full" readOnly />
 
-        {/* User Name (read-only) */}
-        <input type="text" name="userName" defaultValue={user?.displayName} className="input input-bordered w-full" readOnly />
+          {/* User Name (read-only) */}
+          <input type="text" name="userName" defaultValue={user?.displayName} className="input input-bordered w-full" readOnly />
 
-        {/* Description */}
-        <textarea name="description" placeholder="Write a short description..." className="textarea textarea-bordered md:col-span-2 h-24" required></textarea>
+          {/* Description */}
+          <textarea name="description" placeholder="Write a short description..." className="textarea textarea-bordered md:col-span-2 h-24" required></textarea>
 
-        {/* Submit Button */}
-        <div className="md:col-span-2">
-          <button className="btn btn-primary w-full">Add Equipment</button>
-        </div>
+          {/* Submit Button */}
+          <div className="md:col-span-2">
+            <button className="btn btn-primary w-full">Add Equipment</button>
+          </div>
 
-      </form>
-    </div>
+        </form>
+      </div>
     </>
   );
 };

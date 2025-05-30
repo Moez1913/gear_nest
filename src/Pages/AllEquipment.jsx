@@ -6,7 +6,7 @@ const AllEquipment = () => {
     const equipments = useLoaderData();
     const [sorted, setSorted] = useState(false);
 
-    // Sort by price descending if sorted is true
+    // Sort by price descending
     const displayedEquipments = sorted
         ? [...equipments].sort((a, b) => b.price - a.price)
         : equipments;

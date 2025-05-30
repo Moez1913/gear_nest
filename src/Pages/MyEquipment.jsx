@@ -29,7 +29,7 @@ const MyEquipment = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.isConfirmed) {
-        // Replace with your delete API call
+       
         fetch(`https://gear-nest-server.vercel.app/equipments/${id}`, {
           method: 'DELETE'
         })

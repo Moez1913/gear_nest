@@ -2,75 +2,75 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase.init";
 
-export const AuthContext=createContext(null);
+export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
-    const [user,setUser]=useState(null)
-    const [loading,setLoading]=useState(true)
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     //creat user
-    const createUser= (email,password,name,photo)=>{
+    const createUser = (email, password, name, photo) => {
 
-      return  createUserWithEmailAndPassword(auth,email,password)
-       .then((userCredential) => {
-            // Update profile with name and photo URL
-            return updateProfile(userCredential.user, {
-                displayName: name,
-                photoURL: photo
-            }).then(() => userCredential.user);
-        });
-       
+        return createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Update profile with name and photo URL
+                return updateProfile(userCredential.user, {
+                    displayName: name,
+                    photoURL: photo
+                }).then(() => userCredential.user);
+            });
+
     }
 
-    const signInWithGoogle=()=>{
+    const signInWithGoogle = () => {
         setLoading(true)
         const googleProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
+
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                // The signed-in user info.
+
                 const user = result.user;
                 return user;
             })
             .finally(() => setLoading(false));
     }
 
-    const loginUser=(email,password)=>{
+    const loginUser = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
-     
-    const userLogOut=()=>{
-    setLoading(true)
-    return signOut(auth)
-    }
-    
-    useEffect(() => {
-            const unSuscribe = onAuthStateChanged(auth, currentUser => {
-                console.log(currentUser)
-                setUser(currentUser)
-                setLoading(false)
-            })
-            return () => {
-                unSuscribe
-            }
-        }, [])
 
-   const authInfo={
+    const userLogOut = () => {
+        setLoading(true)
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unSuscribe = onAuthStateChanged(auth, currentUser => {
+            console.log(currentUser)
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return () => {
+            unSuscribe
+        }
+    }, [])
+
+    const authInfo = {
         createUser,
         user,
-        loginUser, 
+        loginUser,
         userLogOut,
         signInWithGoogle,
         loading
 
     }
     return (
-       <AuthContext.Provider value={authInfo}>
+        <AuthContext.Provider value={authInfo}>
             {children}
-       </AuthContext.Provider>
+        </AuthContext.Provider>
     );
 };
 

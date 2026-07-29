@@ -5,16 +5,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import useAxiosSecure from '../components/Hooks/Axios/useAxiosSecure';
 
 const MyEquipment = () => {
   const [equipments, setEquipments] = useState([]);
   const { user } = useContext(AuthContext);
+  const axiosSecure=useAxiosSecure();
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://gear-nest-server.vercel.app/equipments/email/${user.email}`)
-        .then(res => res.json())
-        .then(data => setEquipments(data));
+      axiosSecure.get(`/equipments/email/${user.email}`)
+      .then(res => setEquipments(res.data));
     }
   }, [user]);
 
@@ -30,7 +31,7 @@ const MyEquipment = () => {
     }).then(result => {
       if (result.isConfirmed) {
        
-        fetch(`https://gear-nest-server.vercel.app/equipments/${id}`, {
+        fetch(`http://localhost:5000/equipments/${id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

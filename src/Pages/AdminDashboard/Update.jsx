@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import Swal from "sweetalert2";
-import { AuthContext } from "../Providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -43,7 +43,7 @@ const Update = () => {
         };
 
         // Send data to server
-        fetch(`https://gear-nest-server.vercel.app/equipments/${_id}`, {
+        fetch(`http://localhost:5000/equipments/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

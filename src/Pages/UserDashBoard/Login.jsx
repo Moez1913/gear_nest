@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Providers/AuthProvider';
+import { AuthContext } from '../../Providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
 import { Helmet } from 'react-helmet';
+import useAxiosPublic from '../../components/Hooks/Axios/useAxiosPublic';
 
 const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState('')
   const { loginUser, signInWithGoogle } = useContext(AuthContext)
+  const axiosPublic=useAxiosPublic()
   const navigate = useNavigate()
   const handelLogin = (e) => {
     e.preventDefault();
@@ -36,8 +38,22 @@ const Login = () => {
   const handelSignInWithGoogle = () => {
     signInWithGoogle()
       .then(result => {
-        console.log(result.user)
-        toast.success('Login SuccesFull!')
+       
+        const userData={
+          name:result.displayName,
+          email:result.email,
+          image:result.photoURL,
+          phonNumber:result.phoneNumber
+          }
+       axiosPublic.post('/users',userData)
+       .then(res=>{
+        console.log(res.data)
+        if(res.data.insertedId){
+        
+
+        }
+       })
+          toast.success('Login SuccesFull!')
         navigate('/')
       })
       .catch(error => {
@@ -47,7 +63,7 @@ const Login = () => {
           errorMessage === "Firebase: Error (auth/invalid-credential)." && toast.error('Wrong password or email')
         }
       })
-    navigate('/')
+
   }
   return (
     <>
